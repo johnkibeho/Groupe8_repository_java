@@ -8,14 +8,17 @@ import genie_lgiciel_tp.newpackage.com.groupe4.projets.connectionsample.Connecti
 public class Employee extends Person {
     private String cnss;
 
+    // Constructeur par défaut
     public Employee() {
     }
 
+    // Constructeur avec paramètres
     public Employee(int id, String firstName, String lastName, String cnss) {
         super(id, firstName, lastName);
         this.cnss = cnss;
     }
 
+    // Getters et Setters
     public String getCnss() {
         return cnss;
     }
@@ -24,15 +27,26 @@ public class Employee extends Person {
         this.cnss = cnss;
     }
 
+    /**
+     * Afficher l'identité d'un employé sans connexion à la base de données.
+     */
     @Override
     public void showIdentity() {
-        System.out.println(String.format("Employee with ID [%s], FirstName [%s], LastName [%s], Social Security [%s]",
+        System.out.println(String.format("Employé avec ID [%d], Prénom [%s], Nom [%s], CNSS [%s]",
                 id, firstName, lastName, cnss));
     }
 
+    /**
+     * Ajouter un employé dans la base de données.
+     * 
+     * @param p Objet Person (de type Employee)
+     * @return Nombre de lignes affectées
+     * @throws SQLException En cas d'erreur avec la base de données.
+     */
     @Override
     public int add(Person p) throws SQLException {
         String sqlQuery = "INSERT INTO employee(id, firstName, lastName, cnss) VALUES(?,?,?,?)";
+        
         try (PreparedStatement ps = ConnectionFactory.getConnection(ConnectionFactory.MYSQL_CONNECTION)
                 .prepareStatement(sqlQuery)) {
             ps.setInt(1, p.getId());
@@ -44,20 +58,26 @@ public class Employee extends Person {
         }
     }
 
+    /**
+     * Récupérer et afficher dynamiquement l'identité d'un employé depuis la base de données.
+     * 
+     * @param id L'ID de l'employé à rechercher.
+     * @throws SQLException En cas d'erreur avec la base de données.
+     */
     @Override
     public void showDynamicIdentity(int id) throws SQLException {
         String sqlQuery = "SELECT id, firstName, lastName, cnss FROM employee WHERE id=?";
+        
         try (PreparedStatement ps = ConnectionFactory.getConnection(ConnectionFactory.MYSQL_CONNECTION)
                 .prepareStatement(sqlQuery)) {
             ps.setInt(1, id);
+
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    System.out.println(String.format("Employee with ID [%s], FirstName [%s], LastName [%s], Social Security [%s]",
-                            rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"),
-                            rs.getString("cnss")));
-
-
-                            tiygiuiuyitiyiuy
+                    System.out.println(String.format("Employé avec ID [%d], Prénom [%s], Nom [%s], CNSS [%s]",
+                            rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("cnss")));
+                } else {
+                    System.out.println("⚠️ Aucun employé trouvé avec l'ID " + id);
                 }
             }
         }
