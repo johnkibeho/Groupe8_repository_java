@@ -1,4 +1,6 @@
 ---
+# Groupe8_repository_java
+---
 
 # Groupe8_repository_java
 
@@ -21,6 +23,22 @@ Ce dépôt contient du code Java pour notre projet de génie logiciel. Il vise �
 
 Pour cloner et exécuter cette application, vous aurez besoin de Git et Java installés sur votre ordinateur.
 
+````bash
+# Cloner le dépôt
+git clone https://github.com/johnkibeho/Groupe8_repository_java.git
+
+# Naviguer dans le répertoire du dépôt
+cd Groupe8_repository_java
+
+# Compiler les fichiers Java
+javac -d bin src/**/*.java
+
+# Exécuter l'application
+java -cp bin com.votrenom.MainClass
+## Installation
+
+Pour cloner et exécuter cette application, vous aurez besoin de Git et Java installés sur votre ordinateur.
+
 ```bash
 # Cloner le dépôt
 git clone https://github.com/johnkibeho/Groupe8_repository_java.git
@@ -33,7 +51,7 @@ javac -d bin src/**/*.java
 
 # Exécuter l'application
 java -cp bin com.votrenom.MainClass
-```
+````
 
 ## Utilisation
 
@@ -69,12 +87,5 @@ Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter 
 
 - **John Kibeho** - [Email](mailto:john@example.com)
 - **Daniel Iragi** - [Email](mailto:daniel@example.com)
-
-## Captures d'écran
-
-![Capture d'écran 1](images/screenshot1.png)
-![Capture d'écran 2](images/screenshot2.png)
-
----
 
 N'hésitez pas à ajuster le contenu selon les spécificités de votre projet. Pour les images de démonstration, vous devrez capturer des captures d'écran de votre application et les enregistrer dans un répertoire `images` dans votre dépôt. Ensuite, mettez à jour les chemins des images dans le README en conséquence.
