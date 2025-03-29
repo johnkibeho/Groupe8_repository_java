@@ -8,78 +8,72 @@ public class TestAbstract {
 
     public static void main(String[] args) {
         try {
-            // Création et insertion du premier employé
-            Person e1 = new Employee();
-            e1.setId(1);
-            e1.setFirstName("Isaac");
-            e1.setLastName("Kibeho");
-            ((Employee) e1).setCnss("12IJdfogsrdGSD890");
+            System.out.println("🔄 Initialisation de l'insertion des employés et étudiants...\n");
 
-            int result1 = e1.add(e1);
-            if (result1 > 0) {
-                System.out.println("✅ Employee 1 inserted successfully!");
-            } else {
-                System.out.println("⚠️ Failed to insert Employee 1.");
-            }
+            // Création et insertion du premier employé
+            Person e1 = new Employee(1, "Isaac", "Kibeho", "12IJdfogsrdGSD890");
+            insertPerson(e1, "Employee 1");
 
             // Création et insertion du deuxième employé
-            Person e2 = new Employee();
-            e2.setId(2);
-            e2.setFirstName("Bamwisho");
-            e2.setLastName("Feli");
-            ((Employee) e2).setCnss("5239NBK82302");
-
-            int result2 = e2.add(e2);
-            if (result2 > 0) {
-                System.out.println("✅ Employee 2 inserted successfully!");
-            } else {
-                System.out.println("⚠️ Failed to insert Employee 2.");
-            }
+            Person e2 = new Employee(2, "Bamwisho", "Feli", "5239NBK82302");
+            insertPerson(e2, "Employee 2");
 
             // Création et insertion du premier étudiant
             Person s1 = new Student(1, "Jean", "Shabani", "sdfusd233");
-            int result3 = s1.add(s1);
-            if (result3 > 0) {
-                System.out.println("✅ Student 1 inserted successfully!");
-            } else {
-                System.out.println("⚠️ Failed to insert Student 1.");
-            }
+            insertPerson(s1, "Student 1");
 
             // Création et insertion du deuxième étudiant
             Person s2 = new Student(2, "DFFJI", "Ndeze", "DFGSF843765TSREGF");
-            int result4 = s2.add(s2);
-            if (result4 > 0) {
-                System.out.println("✅ Student 2 inserted successfully!");
-            } else {
-                System.out.println("⚠️ Failed to insert Student 2.");
-            }
+            insertPerson(s2, "Student 2");
 
             // Affichage des identités des employés et étudiants
-            System.out.println("\n🔍 Showing inserted employees:");
-            e1.showDynamicIdentity(e1.getId());
-            System.out.println("-----------------------------------------");
-            e2.showDynamicIdentity(e2.getId());
-            System.out.println("-----------------------------------------");
+            System.out.println("\n🔍 Affichage des employés insérés:");
+            showPersonIdentity(e1);
+            showPersonIdentity(e2);
 
-            System.out.println("\n🔍 Showing inserted students:");
-            s1.showDynamicIdentity(s1.getId());
-            System.out.println("------------------------------------------");
-            s2.showDynamicIdentity(s2.getId());
-            System.out.println("-----------------------------------------");
+            System.out.println("\n🔍 Affichage des étudiants insérés:");
+            showPersonIdentity(s1);
+            showPersonIdentity(s2);
 
         } catch (SQLException e) {
-            System.out.println("❌ Erreur lors de l'insertion des données dans la base de données !");
+            System.out.println("❌ Erreur lors de l'insertion des données !");
             e.printStackTrace();
         } finally {
-            // Fermeture propre de la connexion
-            try (Connection connection = ConnectionFactory.getConnection(ConnectionFactory.MYSQL_CONNECTION)) {
-                if (connection != null) {
-                    System.out.println("🔌 Connection closed successfully.");
-                }
-            } catch (Exception e2) {
-                System.out.println("⚠️ Problème lors de la fermeture de la connexion.");
-                e2.printStackTrace();
+            closeConnection();
+        }
+    }
+
+    /**
+     * Insère une personne dans la base de données et affiche un message de confirmation.
+     */
+    private static void insertPerson(Person p, String label) throws SQLException {
+        int result = p.add(p);
+        if (result > 0) {
+            System.out.println("✅ " + label + " inséré avec succès !");
+        } else {
+            System.out.println("⚠️ Échec de l'insertion de " + label + ".");
+        }
+    }
+
+    /**
+     * Affiche l'identité dynamique d'une personne.
+     */
+    private static void showPersonIdentity(Person p) throws SQLException {
+        System.out.println("-----------------------------------------");
+        p.showDynamicIdentity(p.getId());
+    }
+
+    /**
+     * Ferme la connexion à la base de données proprement.
+     */
+    private static void closeConnection() {
+        try (Connection connection = ConnectionFactory.getConnection(ConnectionFactory.MYSQL_CONNECTION)) {
+            if (connection != null) {
+                System.out.println("🔌 Connexion fermée avec succès.");
             }
+        } catch (Exception e) {
+            System.out.println("⚠️ Problème lors de la fermeture de la connexion.");
+            e.printStackTrace();
         }
     }
 }
