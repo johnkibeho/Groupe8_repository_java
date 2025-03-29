@@ -13,6 +13,33 @@ public class TestAbstract {
             // Création et insertion du premier employé
             Person e1 = new Employee(1, "Isaac", "Kibeho", "12IJdfogsrdGSD890");
             insertPerson(e1, "Employee 1");
+            Person e2 = new Employee(2, "IYUMBA", "KWIRAVIWE", "13ahghdjeyqay789");
+            insertPerson(e2, "Employee 2");
+
+            Person e3 = new Employee(3, "Iragi", "daniel", "14IJdfogsrdbhf800");
+            insertPerson(e3, "Employee 3");
+
+            Person e4 = new Employee(4, "Kahindo", "MARIE-LUC", "15IJdfogsrdGSD880");
+            insertPerson(e4, "Employee 4");
+
+            Person e5 = new Employee(5, "KAFINDO", "MUSEKA", "72IJdfogsrdGSD220");
+            insertPerson(e5, "Employee 5");
+
+            Person e6 = new Employee(6, "MWENZE", "CLAUDETTE", "12IJdfogsrdGSD890");
+            insertPerson(e6, "Employee 6");
+
+            Person e7 = new Employee(7, "ITONGWA", "KINUMBA", "12IJdfogsrdGSD400");
+            insertPerson(e7, "Employee 7");
+
+            Person e8 = new Employee(8, "ISENGE", "BENEDICTION", "12IJdfogsrdGSD830");
+            insertPerson(e8, "Employee 8");
+
+            Person e9 = new Employee(9, "ISRAEL", "DAMIEN", "12IJdfogsrdGSD190");
+            insertPerson(e9, "Employee 9");
+
+            Person e10 = new Employee(10, "KABUO", "NATHALIE", "12IJdfogsrdGSD000");
+            insertPerson(e10, "Employee 10");
+            
 
             // Création et insertion du deuxième employé
             Person e2 = new Employee(2, "Bamwisho", "Feli", "5239NBK82302");
