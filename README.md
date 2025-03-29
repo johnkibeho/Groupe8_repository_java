@@ -2,8 +2,6 @@
 # Groupe8_repository_java
 ---
 
-# Groupe8_repository_java
-
 **Description :**  
 repo_pour_notre_travaille_genie_ligiciel
 
