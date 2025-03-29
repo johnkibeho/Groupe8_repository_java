@@ -60,7 +60,7 @@ public class Student extends Person {
 
     /**
      * Récupérer et afficher dynamiquement l'identité d'un étudiant depuis la base de données.
-     * 
+     * respecter  les consignes
      * @param id L'ID de l'étudiant à rechercher.
      * @throws SQLException En cas d'erreur avec la base de données.
      */
