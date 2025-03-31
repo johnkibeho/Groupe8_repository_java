@@ -42,7 +42,7 @@ public abstract class Person {
 	}
 	
 	/**
-	 * Show Person identity without connection to the DataBase
+	 * Montrer l identiter de la personne sans la base de donees
 	 */
 	public abstract void showIdentity();
 	
